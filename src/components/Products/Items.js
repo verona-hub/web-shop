@@ -1,9 +1,7 @@
 import React from 'react';
-import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
+
 
 // Components
-import MaterialItem from '../Utility/MaterialItem';
 import ItemsInfo from './ItemsInfo';
 
 
@@ -14,21 +12,17 @@ const Items = () => {
     };
 
     return (
-        <div>
-            <Grid container spacing={ 12 } justify='center'>
-                {
-                    ItemsInfo.map(item => (
-                        <Grid item key={ item.id } lg={ 6 } md={ 6 } sm={ 6 } xs={ 12 }>
-                            <div>
-                                <img src={ item.image } alt='product'/>
-                            </div>
-                            <h2>{ item.name }</h2>
-                            <h4>{ item.price }</h4>
-                            <Button onClick={addToCart} variant='contained' size='large'> Add to cart </Button>
-                        </Grid>
-                    ))
-                }
-            </Grid>
+        <div className='Items'>
+            {
+                ItemsInfo.map(item => (
+                    <div className='Item' key={item.id}>
+                        <img src={ item.image } alt='product'/>
+                        <h2> { item.name } </h2>
+                        <h4> &euro;{ item.price } </h4>
+                        <button onClick={addToCart} > Add to cart </button>
+                    </div>
+                ))
+            }
         </div>
     );
 };
