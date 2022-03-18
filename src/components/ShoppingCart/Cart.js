@@ -9,7 +9,7 @@ const Cart = () => {
     return (
         <section
             className='Cart'
-            onClick={ () => navigate('/CartContent') }
+            onClick={ () => navigate('/cart-content') }
         >
             <img src={cartLogo} alt='shopping cart'/>
             <h3 className='text'> Cart </h3>
