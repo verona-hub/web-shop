@@ -5,27 +5,19 @@ import Grid from '@mui/material/Grid';
 import MaterialItem from '../Utility/MaterialItem';
 import ItemsInfo from './ItemsInfo';
 
-console.log(ItemsInfo)
 
 const Items = () => {
     return (
         <div>
-            <Grid container spacing={4} justify='center'>
-                <Grid item xs={4}>
-                    <MaterialItem> Product 1 </MaterialItem>
-                </Grid>
-                <Grid item xs={4}>
-                    <MaterialItem> Product 2 </MaterialItem>
-                </Grid>
-                <Grid item xs={4}>
-                    <MaterialItem> Product 3 </MaterialItem>
-                </Grid>
-                <Grid item xs={4}>
-                    <MaterialItem> Product 4 </MaterialItem>
-                </Grid>
-                <Grid item xs={4}>
-                    <MaterialItem> Product 5 </MaterialItem>
-                </Grid>
+            <Grid container spacing={12} justify='center'>
+                {
+                    ItemsInfo.map( item => (
+                        <Grid item key={item.id} lg={4} md={6} sm={6} xs={12}>
+                            <h2>{ item.name }</h2>
+                            <h4>{ item.price }</h4>
+                        </Grid>
+                    ))
+                }
             </Grid>
         </div>
     );
