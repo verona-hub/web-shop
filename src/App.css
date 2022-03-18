@@ -1,6 +1,7 @@
 :root {
     --blue: #093545;
-    --text: #fff;
+    --cream: #ead5c0;
+    --white: #fff;
 }
 
 * {
@@ -16,7 +17,9 @@ html {
 }
 
 body {
-    color: var(--blue);
+    /*background-color: var(--cream);*/
+    /*background-color: var(--blue);*/
+    /*color: var(--cream);*/
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -25,7 +28,6 @@ body {
     position: relative;
     text-align: center;
 }
-
 
 img {
     height: 320px;
@@ -36,11 +38,49 @@ button {
     background-color: var(--blue);
     border: none;
     border-radius: 4px;
-    color: var(--text);
+    color: var(--white);
     cursor: pointer;
     font-size: 16px;
     margin: 20px auto;
     padding: 15px 70px;
+}
+
+/*
+Navbar
+*/
+
+.Navbar {
+    align-items: center;
+    background-color: var(--cream);
+    /*color: var(--white);*/
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+}
+
+.Navbar h1 {
+    margin: 20px;
+}
+
+/*
+Cart
+*/
+
+.Cart {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+    width: 100px;
+}
+
+.Cart img {
+    height: 32px;
+    width: 32px;
+}
+
+.Cart .text {
 }
 
 /*
@@ -56,10 +96,15 @@ Item
 }
 
 .Item {
-    /*background-color: lightpink;*/
-    border: 1px solid var(--blue);
+    /*background-color: var(--white);*/
+    /*background-color: var(--blue);*/
+    /*border: 1px solid var(--blue);*/
     margin: 20px;
     /*max-width: 40%;*/
     padding: 50px;
     width: 600px;
+}
+
+.Item img {
+    border: 1px solid black;
 }
