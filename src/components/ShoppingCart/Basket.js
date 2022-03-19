@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Basket = ({ cartState, addToCart }) => {
+const Basket = ({ cartState, addToCart, removeItem }) => {
     console.log(cartState)
 
     return (
