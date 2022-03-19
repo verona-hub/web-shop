@@ -82,7 +82,11 @@ Basket
 .Basket {
 }
 
-
+.Basket .summary {
+    background-color: lightpink;
+    height: 100px;
+    margin: 50px;
+}
 /*
 Item
 */
