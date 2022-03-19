@@ -8,7 +8,7 @@ import Item from './Item';
 const Items = ({ addToCart }) => {
 
     return (
-        <main className='Items'>
+        <div className='Items'>
             {
                 ItemsData.map(item => (
                         <Item
@@ -18,7 +18,7 @@ const Items = ({ addToCart }) => {
                         />
                 ))
             }
-        </main>
+        </div>
     );
 };
 

@@ -79,13 +79,21 @@ Header
 Basket
 */
 
-.Basket {
+.Basket .order-status,
+.Basket .order-summary,
+.Basket .order-empty,
+.Basket .order-title {
+    margin: 50px;
+    padding: 25px;
 }
 
-.Basket .summary {
+.Basket .order-status {
+    background-color: lightblue;
+
+}
+
+.Basket .order-summary {
     background-color: lightpink;
-    height: 100px;
-    margin: 50px;
 }
 /*
 Item
