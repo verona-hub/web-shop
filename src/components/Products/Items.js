@@ -1,31 +1,24 @@
 import React from 'react';
 
-
 // Components
-import ItemsInfo from './ItemsInfo';
+import ItemsData from './ItemsData';
+import Item from './Item';
 
 
-const Items = () => {
-
-    const addToCart = () => {
-        console.log('Added to cart')
-    };
+const Items = ({ addToCart }) => {
 
     return (
-        <div className='Items'>
+        <main className='Items'>
             {
-                ItemsInfo.map(item => (
-                    <div className='Item' key={item.id}>
-                        <a href={item.image}>
-                            <img src={ item.image } alt='product'/>
-                        </a>
-                        <h2> { item.name } </h2>
-                        <h4> &euro;{ item.price } </h4>
-                        <button onClick={addToCart} > Add to cart </button>
-                    </div>
+                ItemsData.map(item => (
+                        <Item
+                            addToCart={addToCart}
+                            item={item}
+                            key={item.id}
+                        />
                 ))
             }
-        </div>
+        </main>
     );
 };
 

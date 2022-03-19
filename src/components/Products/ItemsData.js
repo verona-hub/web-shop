@@ -5,7 +5,7 @@ import smokeDetectorImg from '../../img/smoke-detector.jpg';
 import waterLeakSensorImg from '../../img/water-leak-sensor.jpg';
 
 
-const ItemsInfo = [
+const ItemsData = [
     {
         id: 1,
         name: 'Smart Hub',
@@ -39,4 +39,4 @@ const ItemsInfo = [
 ];
 
 
-export default ItemsInfo;
+export default ItemsData;

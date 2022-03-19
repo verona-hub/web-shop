@@ -1,21 +1,39 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter } from "react-router-dom";
 import './App.css';
 
-import Items from './components/Products/Items';
-import Navbar from './components/Navbar';
-import CartContent from "./components/ShoppingCart/CartContent";
+// Components
+import Header from './components/Header/Header';
+import Main from './components/Main';
 
 
 const App = () => {
+
+    const [cartState, setCartState] = useState([]);
+
+    const addToCart = (item) => {
+        console.log('Added to cart');
+
+        const ifExists = cartState.find(x => x.id === item.id);
+
+        if (ifExists) {
+            setCartState(cartState.map( x => (
+                x.id === item.id ? {...ifExists, quantity: ifExists.quantity +1} : x
+            )));
+        } else {
+            setCartState([...cartState, {...item, quantity: 1}]);
+        }
+    };
+
+    const removeItem = () => {
+
+    };
+
     return (
         <BrowserRouter>
             <div className="App">
-                <Navbar/>
-                <Routes>
-                    <Route path='/' element={ <Items/> } />
-                    <Route exact path='cart-content' element={ <CartContent /> } />
-                </Routes>
+                <Header cartState={cartState}  />
+                <Main cartState={cartState} addToCart={addToCart} />
             </div>
         </BrowserRouter>
     );

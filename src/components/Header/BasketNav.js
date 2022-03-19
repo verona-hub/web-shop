@@ -3,19 +3,19 @@ import cartLogo from '../../img/shopping-cart.png';
 import { useNavigate } from "react-router-dom";
 
 
-const Cart = () => {
+const BasketNav = ({ cartState }) => {
     const navigate = useNavigate();
 
     return (
         <section
-            className='Cart'
-            onClick={ () => navigate('/cart-content') }
+            className='BasketNav'
+            onClick={ () => navigate('/basket') }
         >
             <img src={cartLogo} alt='shopping cart'/>
-            <h3 className='text'> Cart </h3>
+            <h3 className='text'> BasketNav </h3>
         </section>
     );
 };
 
 
-export default Cart;
+export default BasketNav;
