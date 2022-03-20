@@ -12,7 +12,6 @@ const App = () => {
     const [cartState, setCartState] = useState([]);
 
     const addToCart = (item) => {
-        console.log('Added to cart');
 
         const ifExists = cartState.find(x => x.id === item.id);
 

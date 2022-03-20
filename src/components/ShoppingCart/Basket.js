@@ -4,28 +4,28 @@ import React, { useState } from 'react';
 const Basket = ({ cartState, addToCart, removeItem }) => {
 
     const [promotionCode, setPromotionCode] = useState('');
+    const [promotionCodeActive, setPromotionCodeActive] = useState('');
+    const [promotionCodePresent, setPromotionCodePresent] = useState(false);
 
-    const price = cartState.reduce( (acc, item) => acc + item.price * item.quantity, 0 );
-    const promotion20 = price * 0.2;
-    const totalPrice = price - promotion20;
+    const subtotal = cartState.reduce( (acc, item) => acc + item.price * item.quantity, 0 );
+    const promotion20 = subtotal * 0.2;
+    const totalPrice = subtotal - promotion20;
 
     const onPromoChange = e => {
-        // e.preventDefault();
         setPromotionCode(e.target.value);
-
-        console.log(promotionCode)
     };
-
 
     const addPromo = () => {
         console.log(`Promotion code ${promotionCode} was added`)
+        setPromotionCodePresent(true);
+        setPromotionCodeActive(promotionCode);
         setPromotionCode('');
     };
 
     return (
         <section className='Basket'>
             <div className='order-title'>
-                <h1> Basket component </h1>
+                <h1> Your cart </h1>
             </div>
 
             {
@@ -40,19 +40,21 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
                     <div className='order-status' key={item.id}>
                         <h3> { item.name } </h3>
                         <h4> { item.price }</h4>
-                        <button onClick={ () => removeItem(item) }> - </button>
-                        <button onClick={ () => addToCart(item) }> + </button>
+                        <div className='item-quantity-button'>
+                            <button onClick={ () => removeItem(item) }> -</button>
+                            <button onClick={ () => addToCart(item) }> +</button>
+                        </div>
                         <h4> { item.quantity } x ${ item.price.toFixed(2) } </h4>
-                        <h4>  </h4>
-                        <label htmlFor='promotion'> Promotion code: </label>
-                        <input
-                            id='promotion'
-                            onChange={ onPromoChange }
-                            placeholder='Input code here'
-                            type='text'
-                            value={promotionCode}
-                        />
-                        <button onClick={ addPromo }> Add </button>
+                        <div className="discount-wrapper">
+                            <input
+                                id='promotion'
+                                onChange={ onPromoChange }
+                                placeholder='Discount code'
+                                type='text'
+                                value={ promotionCode }
+                            />
+                            <button onClick={ addPromo } className='discount-button'> Apply</button>
+                        </div>
 
                     </div>
                 ))
@@ -62,9 +64,12 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
                 cartState.length !== 0 && (
                     <div className="order-summary">
                         <h1> Order Summary </h1>
-                        <h3> Order price: &euro;{price.toFixed(2)} </h3>
-                        <h3> Promotion amount: </h3>
-                        <h3> Total price: </h3>
+                        <h3> Subtotal: &euro;{subtotal.toFixed(2)} </h3>
+                        { promotionCodePresent &&  (
+                            <h3> Discount applied: {promotionCodeActive} </h3>
+                        )}
+                        <hr/>
+                        <h3> Total: </h3>
                     </div>
 
                 )

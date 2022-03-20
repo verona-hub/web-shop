@@ -2,6 +2,7 @@
     --black: #000;
     --blue: #093545;
     --cream: #ead5c0;
+    --green: #027502;
     --white: #fff;
 }
 
@@ -38,6 +39,11 @@ button {
     font-size: 16px;
     margin: 20px auto;
     padding: 15px 70px;
+}
+
+hr {
+    width: 40%;
+    margin: 0 auto;
 }
 
 /*
@@ -78,6 +84,23 @@ Header
 /*
 Basket
 */
+
+.Basket input {
+    background-clip: padding-box;
+    border: 1px transparent solid;
+    border-radius: 5px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    line-height: inherit;
+    margin: 0 30px;
+    padding: 0.9285714286em 0.7857142857em;
+    width: 200px;
+    word-break: normal;
+}
+
+.Basket .discount-wrapper button {
+    background-color: var(--green);
+}
 
 .Basket .order-status,
 .Basket .order-summary,
