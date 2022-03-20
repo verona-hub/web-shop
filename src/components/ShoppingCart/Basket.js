@@ -4,21 +4,29 @@ import React, { useState } from 'react';
 const Basket = ({ cartState, addToCart, removeItem }) => {
 
     const [promotionCode, setPromotionCode] = useState('');
-    const [promotionCodeActive, setPromotionCodeActive] = useState('');
+    const [activatedPromotionCode, setActivatedPromotionCode] = useState('');
+    const [promotionAmount, setPromotionAmount] = useState(0);
     const [promotionCodePresent, setPromotionCodePresent] = useState(false);
 
     const subtotal = cartState.reduce( (acc, item) => acc + item.price * item.quantity, 0 );
-    const promotion20 = subtotal * 0.2;
-    const totalPrice = subtotal - promotion20;
+    // let promotionAmount = 0;
+    const totalPrice = promotionCodePresent ? subtotal - promotionAmount : subtotal;
 
     const onPromoChange = e => {
         setPromotionCode(e.target.value);
     };
 
-    const addPromo = () => {
-        console.log(`Promotion code ${promotionCode} was added`)
+    const applyPromotion = () => {
         setPromotionCodePresent(true);
-        setPromotionCodeActive(promotionCode);
+        // setActivatedPromotionCode(promotionCode);
+
+        if(promotionCode === '5%OFF'){
+            setPromotionAmount(subtotal * 0.05);
+        } else if (promotionCode === '20EUROFF'){
+
+            // setPromotionAmount(promotionAmount - 20);
+        }
+
         setPromotionCode('');
     };
 
@@ -53,9 +61,8 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
                                 type='text'
                                 value={ promotionCode }
                             />
-                            <button onClick={ addPromo } className='discount-button'> Apply</button>
+                            <button onClick={ applyPromotion } className='discount-button'> Apply</button>
                         </div>
-
                     </div>
                 ))
             }
@@ -66,12 +73,14 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
                         <h1> Order Summary </h1>
                         <h3> Subtotal: &euro;{subtotal.toFixed(2)} </h3>
                         { promotionCodePresent &&  (
-                            <h3> Discount applied: {promotionCodeActive} </h3>
+                            <h3> Discount applied: { promotionAmount.toFixed(2) } </h3>
                         )}
                         <hr/>
-                        <h3> Total: </h3>
+                        <h3> Total: &euro;{
+                            totalPrice && totalPrice.toFixed(2)
+                        }
+                        </h3>
                     </div>
-
                 )
             }
 
