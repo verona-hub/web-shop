@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 
 const Basket = ({ cartState, addToCart, removeItem }) => {
 
-    const [promotionCode, setPromotionCode] = useState('');
-    const [activatedPromotionCode, setActivatedPromotionCode] = useState('');
+    const [currentPromotionCode, setCurrentPromotionCode] = useState('');
+    const [activatedPromotionCode, setActivatedPromotionCode] = useState([]);
     const [promotionAmount, setPromotionAmount] = useState(0);
     const [promotionCodePresent, setPromotionCodePresent] = useState(false);
 
@@ -13,23 +13,34 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
     const totalPrice = promotionCodePresent ? subtotal - promotionAmount : subtotal;
 
     const onPromoChange = e => {
-        setPromotionCode(e.target.value);
+        setCurrentPromotionCode(e.target.value);
     };
 
     const applyPromotion = () => {
         setPromotionCodePresent(true);
-        // setActivatedPromotionCode(promotionCode);
+        // setActivatedPromotionCode(currentPromotionCode);
 
-        if(promotionCode === '5%OFF'){
-            setPromotionAmount(subtotal * 0.05);
-        } else if (promotionCode === '20EUROFF'){
+        let amount = 0;
+        let total = 0;
 
-            // setPromotionAmount(promotionAmount - 20);
+        if(currentPromotionCode === '5%OFF'){
+            amount = 0.05;
+            total = subtotal * amount;
+
+            setPromotionAmount(total);
+            setActivatedPromotionCode([...activatedPromotionCode, total]);
+
+        } else if (currentPromotionCode === '20EUROFF') {
+            amount = 0.20;
+            total = subtotal * amount;
+
+            setPromotionAmount(total);
+            setActivatedPromotionCode([...activatedPromotionCode, total]);
         }
 
-        setPromotionCode('');
+        setCurrentPromotionCode('');
     };
-
+    console.log(activatedPromotionCode)
     return (
         <section className='Basket'>
             <div className='order-title'>
@@ -54,12 +65,13 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
                         </div>
                         <h4> { item.quantity } x ${ item.price.toFixed(2) } </h4>
                         <div className="discount-wrapper">
+                            <h3>5%OFF 20EUROFF</h3>
                             <input
                                 id='promotion'
                                 onChange={ onPromoChange }
                                 placeholder='Discount code'
                                 type='text'
-                                value={ promotionCode }
+                                value={ currentPromotionCode }
                             />
                             <button onClick={ applyPromotion } className='discount-button'> Apply</button>
                         </div>
@@ -83,7 +95,6 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
                     </div>
                 )
             }
-
         </section>
     );
 };
