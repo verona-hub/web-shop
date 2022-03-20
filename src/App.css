@@ -87,6 +87,7 @@ Basket
 
 .Basket input {
     background-clip: padding-box;
+    background-color: var(--cream);
     border: 1px transparent solid;
     border-radius: 5px;
     box-sizing: border-box;
@@ -98,26 +99,59 @@ Basket
     word-break: normal;
 }
 
-.Basket .discount-wrapper button {
-    background-color: var(--green);
+.Basket .order-title,
+.Basket .order-empty,
+.Basket .order-header,
+.Basket .order-status,
+.Basket .order-summary {
+    margin: 30px;
+    padding: 10px;
+
+    display: flex;
+    justify-content: space-between;
 }
 
-.Basket .order-status,
-.Basket .order-summary,
-.Basket .order-empty,
-.Basket .order-title {
-    margin: 50px;
-    padding: 25px;
+.Basket .order-header {
+    background-color: lightgreen;
 }
 
 .Basket .order-status {
+    align-items: center;
     background-color: lightblue;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
 
+.Basket .order-status div {
+
+}
+
+.Basket .order-status img {
+    height: 120px;
+    width: 120px;
+}
+
+.Basket .order-status .buttons-wrapper {
+    left: 300px;
+    position: absolute;
+}
+
+.Basket .order-status button {
+    margin: 0 2px;
+    padding: 0;
+    height: 24px;
+    width: 36px;
+}
+
+.Basket .discount-wrapper button {
+    background-color: var(--green);
 }
 
 .Basket .order-summary {
     background-color: lightpink;
 }
+
 /*
 Item
 */

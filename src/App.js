@@ -10,9 +10,7 @@ import Main from './components/Main';
 const App = () => {
 
     const [cartState, setCartState] = useState([]);
-
     const addToCart = (item) => {
-
         const ifExists = cartState.find(x => x.id === item.id);
 
         if (ifExists) {
