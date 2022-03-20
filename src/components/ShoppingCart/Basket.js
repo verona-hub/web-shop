@@ -5,7 +5,6 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
 
     const [currentPromotionCode, setCurrentPromotionCode] = useState('');
     const [activatedPromotionCode, setActivatedPromotionCode] = useState([]);
-    // const [promotionAmount, setPromotionAmount] = useState(0);
     const [promotionCodePresent, setPromotionCodePresent] = useState(false);
 
     const [discount20, setDiscount20] = useState(false);
@@ -13,10 +12,8 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
     const [discount20Eur, setDiscount20Eur] = useState(false);
 
     const subtotal = cartState.reduce( (acc, item) => acc + item.price * item.quantity, 0 );
-    // let promotionAmount = 0;
-    let promotionAmount = activatedPromotionCode.reduce( (acc, curr) => acc + curr, 0);
-    const totalPrice = subtotal - promotionAmount;
-    // const totalPrice = promotionCodePresent ? subtotal - promotionAmount : subtotal;
+    const promotionAmount = activatedPromotionCode.reduce( (acc, curr) => acc + curr, 0);
+    const totalPrice = promotionCodePresent ? subtotal - Number(promotionAmount) : subtotal;
 
     const onPromoChange = e => {
         setCurrentPromotionCode(e.target.value);
@@ -24,49 +21,40 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
 
     const applyPromotion = () => {
         setPromotionCodePresent(true);
-        // setActivatedPromotionCode(currentPromotionCode);
 
-        let amount = 0;
-        let total = 0;
+        let discountAmount = 0;
+        let totalDiscount = 0;
 
         if(currentPromotionCode === '20%OFF') {
-            amount = 0.20;
+            discountAmount = 0.2;
             setDiscount20(true);
 
-            total = subtotal * amount;
-            setActivatedPromotionCode([...activatedPromotionCode, total]);
+            totalDiscount = subtotal * discountAmount;
+            setActivatedPromotionCode([...activatedPromotionCode, totalDiscount.toFixed(2)]);
         }
 
         if(currentPromotionCode === '5%OFF'){
-            amount = 0.05;
+            discountAmount = 0.05;
             setDiscount5(true);
 
-            total = subtotal * amount;
-            setActivatedPromotionCode([...activatedPromotionCode, total]);
-
-            // amount = 0.05;
-            // total = subtotal * amount;
-            //
-            // setPromotionAmount(total);
-            // setActivatedPromotionCode([...activatedPromotionCode, total]);
-
+            totalDiscount = subtotal * discountAmount;
+            setActivatedPromotionCode([...activatedPromotionCode, totalDiscount.toFixed(2)]);
         }
         if (currentPromotionCode === '20EUROFF') {
-            amount = 20;
+            discountAmount = 20;
             setDiscount20Eur(true);
 
-            total = subtotal - amount;
-            setActivatedPromotionCode([...activatedPromotionCode, total]);
-            //
-            // setPromotionAmount(total);
-            // setActivatedPromotionCode([...activatedPromotionCode, total]);
+            let discount = subtotal - discountAmount;
+
+            totalDiscount = subtotal - discount;
+            setActivatedPromotionCode([...activatedPromotionCode, totalDiscount.toFixed(2)]);
         }
 
         setCurrentPromotionCode('');
     };
 
-    console.log(activatedPromotionCode);
-    console.log(promotionAmount)
+    console.log(`activatedPromotionCode: ${activatedPromotionCode}`);
+    console.log(`promotionAmount: ${promotionAmount}`)
 
     return (
         <section className='Basket'>
@@ -119,9 +107,7 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
                         {/*    <h3> Discount applied: { promotionAmount.toFixed(2) } </h3>*/}
                         {/*)}*/}
                         <hr/>
-                        <h3> Total: &euro;{
-                            totalPrice && totalPrice.toFixed(2)
-                        }
+                        <h3> Total: &euro;{ totalPrice }
                         </h3>
                     </div>
                 )
