@@ -5,12 +5,18 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
 
     const [currentPromotionCode, setCurrentPromotionCode] = useState('');
     const [activatedPromotionCode, setActivatedPromotionCode] = useState([]);
-    const [promotionAmount, setPromotionAmount] = useState(0);
+    // const [promotionAmount, setPromotionAmount] = useState(0);
     const [promotionCodePresent, setPromotionCodePresent] = useState(false);
+
+    const [discount20, setDiscount20] = useState(false);
+    const [discount5, setDiscount5] = useState(false);
+    const [discount20Eur, setDiscount20Eur] = useState(false);
 
     const subtotal = cartState.reduce( (acc, item) => acc + item.price * item.quantity, 0 );
     // let promotionAmount = 0;
-    const totalPrice = promotionCodePresent ? subtotal - promotionAmount : subtotal;
+    let promotionAmount = activatedPromotionCode.reduce( (acc, curr) => acc + curr, 0);
+    const totalPrice = subtotal - promotionAmount;
+    // const totalPrice = promotionCodePresent ? subtotal - promotionAmount : subtotal;
 
     const onPromoChange = e => {
         setCurrentPromotionCode(e.target.value);
@@ -23,24 +29,45 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
         let amount = 0;
         let total = 0;
 
+        if(currentPromotionCode === '20%OFF') {
+            amount = 0.20;
+            setDiscount20(true);
+
+            total = subtotal * amount;
+            setActivatedPromotionCode([...activatedPromotionCode, total]);
+        }
+
         if(currentPromotionCode === '5%OFF'){
             amount = 0.05;
-            total = subtotal * amount;
+            setDiscount5(true);
 
-            setPromotionAmount(total);
+            total = subtotal * amount;
             setActivatedPromotionCode([...activatedPromotionCode, total]);
 
-        } else if (currentPromotionCode === '20EUROFF') {
-            amount = 0.20;
-            total = subtotal * amount;
+            // amount = 0.05;
+            // total = subtotal * amount;
+            //
+            // setPromotionAmount(total);
+            // setActivatedPromotionCode([...activatedPromotionCode, total]);
 
-            setPromotionAmount(total);
+        }
+        if (currentPromotionCode === '20EUROFF') {
+            amount = 20;
+            setDiscount20Eur(true);
+
+            total = subtotal - amount;
             setActivatedPromotionCode([...activatedPromotionCode, total]);
+            //
+            // setPromotionAmount(total);
+            // setActivatedPromotionCode([...activatedPromotionCode, total]);
         }
 
         setCurrentPromotionCode('');
     };
-    console.log(activatedPromotionCode)
+
+    console.log(activatedPromotionCode);
+    console.log(promotionAmount)
+
     return (
         <section className='Basket'>
             <div className='order-title'>
@@ -65,7 +92,7 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
                         </div>
                         <h4> { item.quantity } x ${ item.price.toFixed(2) } </h4>
                         <div className="discount-wrapper">
-                            <h3>5%OFF 20EUROFF</h3>
+                            <h3>20%OFF 5%OFF 20EUROFF</h3>
                             <input
                                 id='promotion'
                                 onChange={ onPromoChange }
@@ -84,9 +111,13 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
                     <div className="order-summary">
                         <h1> Order Summary </h1>
                         <h3> Subtotal: &euro;{subtotal.toFixed(2)} </h3>
-                        { promotionCodePresent &&  (
-                            <h3> Discount applied: { promotionAmount.toFixed(2) } </h3>
-                        )}
+                        { discount20 && <h3> Applied discount: 20% Off </h3>}
+                        { discount5 && <h3> Applied discount: 5% Off </h3>}
+                        { discount20Eur && <h3> Applied discount: 20 EUR Off </h3>}
+
+                        {/*{ promotionCodePresent &&  (*/}
+                        {/*    <h3> Discount applied: { promotionAmount.toFixed(2) } </h3>*/}
+                        {/*)}*/}
                         <hr/>
                         <h3> Total: &euro;{
                             totalPrice && totalPrice.toFixed(2)
