@@ -5,22 +5,24 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
 
     const [currentPromotionCode, setCurrentPromotionCode] = useState('');
     const [activatedPromotionCode, setActivatedPromotionCode] = useState([]);
-    const [promotionCodePresent, setPromotionCodePresent] = useState(false);
 
     const [discount20, setDiscount20] = useState(false);
     const [discount5, setDiscount5] = useState(false);
     const [discount20Eur, setDiscount20Eur] = useState(false);
 
-    const subtotal = cartState.reduce( (acc, item) => acc + item.price * item.quantity, 0 );
     const promotionAmount = activatedPromotionCode.reduce( (acc, curr) => acc + curr, 0);
-    const totalPrice = promotionCodePresent ? subtotal - Number(promotionAmount) : subtotal;
+    const subtotal = cartState.reduce( (acc, item) =>
+        acc +  item.price * item.quantity, 0
+    );
+
+    const promotionCodeExists = activatedPromotionCode.length > 0;
+    let totalPrice = promotionCodeExists ? subtotal - Number(promotionAmount) : subtotal;
 
     const onPromoChange = e => {
         setCurrentPromotionCode(e.target.value);
     };
 
     const applyPromotion = () => {
-        setPromotionCodePresent(true);
 
         let discountAmount = 0;
         let totalDiscount = 0;
@@ -40,7 +42,7 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
             totalDiscount = subtotal * discountAmount;
             setActivatedPromotionCode([...activatedPromotionCode, Number(totalDiscount)]);
         }
-        if (currentPromotionCode === '20EUROFF') {
+        if(currentPromotionCode === '20EUROFF') {
             discountAmount = 20;
             setDiscount20Eur(true);
 
@@ -75,8 +77,8 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
                         <h3> { item.name } </h3>
                         <h4> { item.price }</h4>
                         <div className='item-quantity-button'>
-                            <button onClick={ () => removeItem(item) }> -</button>
-                            <button onClick={ () => addToCart(item) }> +</button>
+                            <button onClick={ () => removeItem(item) }> - </button>
+                            <button onClick={ () => addToCart(item) }> + </button>
                         </div>
                         <h4> { item.quantity } x ${ item.price.toFixed(2) } </h4>
                         <div className="discount-wrapper">

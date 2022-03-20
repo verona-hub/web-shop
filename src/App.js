@@ -27,7 +27,7 @@ const App = () => {
     const removeItem = (item) => {
         const ifExists = cartState.find(x => x.id === item.id);
         if (ifExists.quantity === 1) {
-            setCartState(cartState.filter( x => ( x.id !== item.id )));
+            setCartState(cartState.filter( x => x.id !== item.id ));
         } else {
             setCartState(cartState.map( x => (
                 x.id === item.id ? {...ifExists, quantity: ifExists.quantity - 1} : x
