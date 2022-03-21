@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 const Basket = ({ cartState, addToCart, removeItem }) => {
+    const navigate = useNavigate();
 
     // Basket state
     const [currentPromotionCode, setCurrentPromotionCode] = useState('');
@@ -77,56 +79,54 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
             }
 
             { !cartIsEmpty && (
-                <div className='order-header'>
-                    <h2> Product </h2>
-                    <h2> Price </h2>
-                    <h2> Quantity </h2>
-                    <h2> Total </h2>
-                </div>
-            )}
-
-            { cartState.map( item => (
-                <div className='order-status' key={item.id}>
-                    <div>
-                        <h3> { item.name } </h3>
+                <>
+                    <div className='order-info'>
+                        <div className='my-orders'>
+                            { cartState.map(item => (
+                                <div className='order' key={ item.id }>
+                                    <div className='image-wrapper'>
+                                        <img src={ item.image } alt='product'/>
+                                    </div>
+                                    <div className='details'>
+                                        <h3> { item.name } </h3>
+                                        <h4> &euro;{ item.price }</h4>
+                                    </div>
+                                    <div className='buttons-wrapper'>
+                                        <h4> Quantity:{ item.quantity } </h4>
+                                        <button onClick={ () => removeItem(item) }> -</button>
+                                        <button onClick={ () => addToCart(item) }> +</button>
+                                    </div>
+                                </div> ))
+                            }
+                        </div>
+                        <div className="discount-wrapper">
+                            <div>
+                                <h3>20%OFF 5%OFF 20EUROFF</h3>
+                                <input
+                                    id='promotion'
+                                    onChange={ onPromoChange }
+                                    placeholder='Discount code'
+                                    type='text'
+                                    value={ currentPromotionCode }
+                                />
+                                <button onClick={ applyPromotion } className='discount-button'> Apply</button>
+                            </div>
+                        </div>
                     </div>
-                    <img src={ item.image } alt='product'/>
-                    <h4> { item.price }</h4>
-                    <h4> { item.quantity } </h4>
-                    <div className='buttons-wrapper'>
-                        <button onClick={ () => removeItem(item) }> - </button>
-                        <button onClick={ () => addToCart(item) }> + </button>
+
+                    <div className="order-summary">
+                        <h1> Order Summary </h1>
+                        <h3> Subtotal: &euro;{ subtotal.toFixed(2) } </h3>
+                        { discount20 && <h3> Applied discount: 20% Off </h3> }
+                        { discount5 && <h3> Applied discount: 5% Off </h3> }
+                        { discount20Eur && <h3> Applied discount: 20 EUR Off </h3> }
+
+                        <hr/>
+                        <h3> Total: &euro;{ totalPrice.toFixed(2) }
+                        </h3>
                     </div>
-                </div>
-            ))
-            }
-
-            { !cartIsEmpty && (
-                <div className="discount-wrapper">
-                    <h3>20%OFF 5%OFF 20EUROFF</h3>
-                    <input
-                        id='promotion'
-                        onChange={ onPromoChange }
-                        placeholder='Discount code'
-                        type='text'
-                        value={ currentPromotionCode }
-                    />
-                    <button onClick={ applyPromotion } className='discount-button'> Apply</button>
-                </div>
-            )}
-
-            { cartState.length !== 0 && (
-                <div className="order-summary">
-                    <h1> Order Summary </h1>
-                    <h3> Subtotal: &euro;{subtotal.toFixed(2)} </h3>
-                    { discount20 && <h3> Applied discount: 20% Off </h3>}
-                    { discount5 && <h3> Applied discount: 5% Off </h3>}
-                    { discount20Eur && <h3> Applied discount: 20 EUR Off </h3>}
-
-                    <hr/>
-                    <h3> Total: &euro;{ totalPrice.toFixed(2) }
-                    </h3>
-                </div>
+                    <button onClick={ () => navigate('/checkout') }> Checkout</button>
+                </>
             )
             }
         </section>

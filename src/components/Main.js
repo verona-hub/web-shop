@@ -1,7 +1,10 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
-import Items from "./Products/Items";
+
+// Components
 import Basket from "./ShoppingCart/Basket";
+import Checkout from './ShoppingCart/Checkout';
+import Items from "./Products/Items";
 
 
 const Main = ({ cartState, addToCart, removeItem }) => {
@@ -19,6 +22,10 @@ const Main = ({ cartState, addToCart, removeItem }) => {
                         addToCart={ addToCart }
                         removeItem={ removeItem }
                     /> }
+                />
+                <Route exact path='checkout' element={
+                    <Checkout/>
+                }
                 />
             </Routes>
         </main>

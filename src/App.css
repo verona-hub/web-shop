@@ -1,6 +1,7 @@
 :root {
     --black: #000;
     --blue: #093545;
+    --blue_light: #07789f;
     --cream: #ead5c0;
     --green: #027502;
     --white: #fff;
@@ -101,55 +102,61 @@ Basket
 
 .Basket .order-title,
 .Basket .order-empty,
-.Basket .order-header,
-.Basket .order-status,
+.Basket .order-info,
 .Basket .order-summary {
     margin: 30px;
-    padding: 10px;
+}
 
+.Basket .order-title,
+.Basket .order-empty {
     display: flex;
     justify-content: space-between;
 }
 
-.Basket .order-header {
-    background-color: lightgreen;
+.Basket .my-orders {
+    flex-basis: 40%;
 }
 
-.Basket .order-status {
+.Basket .order-info {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Basket .order {
     align-items: center;
-    background-color: lightblue;
+    border: 1px solid black;
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
+    justify-content: space-around;
+    margin: 10px 0;
 }
 
-.Basket .order-status div {
-
-}
-
-.Basket .order-status img {
+.Basket .order img {
     height: 120px;
     width: 120px;
 }
 
-.Basket .order-status .buttons-wrapper {
-    left: 300px;
-    position: absolute;
-}
-
-.Basket .order-status button {
+.Basket .order button {
     margin: 0 2px;
     padding: 0;
     height: 24px;
     width: 36px;
 }
 
+.Basket .discount-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-basis: 40%;
+}
+
 .Basket .discount-wrapper button {
-    background-color: var(--green);
+    background-color: var(--blue_light);
 }
 
 .Basket .order-summary {
     background-color: lightpink;
+    display: flex;
+    flex-direction: column;
 }
 
 /*
