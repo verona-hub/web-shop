@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+// Context
+import { MyContext } from "../../Context/MyContext";
 
 
-const Item = ({ item, addToCart  }) => {
+const Item = ({ item }) => {
+
+    const { addToCart } = useContext(MyContext);
 
     return (
         <div className='Item'>

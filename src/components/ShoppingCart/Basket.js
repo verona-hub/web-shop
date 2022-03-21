@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+// Context
+import { MyContext } from '../../Context/MyContext';
 
+const Basket = () => {
 
-const Basket = ({ cartState, addToCart, removeItem }) => {
+    // State
+    const {
+        cartState, addToCart, removeItem,
+        subtotal, setSubtotal,
+        setTotalPrice
+    } = useContext(MyContext);
+
     const navigate = useNavigate();
 
     const cartIsEmpty = cartState.length === 0;
 
-    // Subtotal is a sum of all items inside the basket multiplied by the quantity
-    const subtotal = cartState.reduce( (acc, item) => acc + (item.price * item.quantity), 0);
+    useEffect( () => {
+        // Subtotal is a sum of all items inside the basket multiplied by the quantity
+        setSubtotal(cartState.reduce( (acc, item) => acc + (item.price * item.quantity), 0));
+    }, [cartState, setSubtotal]);
 
-    let totalPrice = subtotal;
+    const onCheckout = () => {
+        setTotalPrice(subtotal);
+        navigate('/checkout');
+    };
 
     return (
         <section className='Basket'>
@@ -50,11 +64,8 @@ const Basket = ({ cartState, addToCart, removeItem }) => {
                     <div className="order-summary">
                         <h1> Order Summary </h1>
                         <h3> Subtotal: &euro;{ subtotal.toFixed(2) } </h3>
-                        <hr/>
-                        <h3> Total: &euro;{ totalPrice.toFixed(2) }
-                        </h3>
                     </div>
-                    <button onClick={ () => navigate('/checkout') }> Checkout</button>
+                    <button onClick={ onCheckout }> Checkout </button>
                 </>
             )}
         </section>

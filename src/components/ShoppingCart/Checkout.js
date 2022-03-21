@@ -1,13 +1,21 @@
 import React, { useContext } from 'react';
+// Context
 import { MyContext } from '../../Context/MyContext';
 
-const Checkout = ({ cartState }) => {
+const Checkout = () => {
 
-    const {currentPromotionCode, setCurrentPromotionCode,
+    // State
+    const {
+        currentPromotionCode, setCurrentPromotionCode,
         activatedPromotionCode, setActivatedPromotionCode,
         discount20, setDiscount20,
         discount5, setDiscount5,
-        discount20Eur, setDiscount20Eur} = useContext(MyContext);
+        discount20Eur, setDiscount20Eur,
+        subtotal, setSubtotal,
+        totalPrice, setTotalPrice
+    } = useContext(MyContext);
+
+    console.log(subtotal.toFixed(2))
 
     // The promotion amount is a sum of all promotion codes applied
     const promotionAmount = activatedPromotionCode.reduce( (acc, curr) => acc + curr, 0);

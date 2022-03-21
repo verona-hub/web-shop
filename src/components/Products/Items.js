@@ -1,23 +1,27 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+// Context
+import { MyContext } from "../../Context/MyContext";
 // Components
 import ItemsData from './ItemsData';
 import Item from './Item';
 
 
-const Items = ({ addToCart }) => {
+const Items = () => {
+
+    const { addToCart } = useContext(MyContext);
 
     return (
         <div className='Items'>
-            {
-                ItemsData.map(item => (
+            <MyContext.Provider value={{ addToCart }}>
+                {
+                    ItemsData.map(item => (
                         <Item
-                            addToCart={addToCart}
-                            item={item}
-                            key={item.id}
+                            item={ item }
+                            key={ item.id }
                         />
-                ))
-            }
+                    ))
+                }
+            </MyContext.Provider>
         </div>
     );
 };
