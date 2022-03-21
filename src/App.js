@@ -10,6 +10,7 @@ import Main from './components/Main';
 const App = () => {
 
     const [cartState, setCartState] = useState([]);
+
     const addToCart = (item) => {
         const ifExists = cartState.find(x => x.id === item.id);
 
@@ -36,7 +37,7 @@ const App = () => {
     return (
         <BrowserRouter>
             <div className="App">
-                <Header cartState={cartState}  />
+                <Header cartState={ cartState }/>
                 <Main
                     addToCart={ addToCart }
                     cartState={ cartState }

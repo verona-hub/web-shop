@@ -3,7 +3,7 @@ import cartLogo from '../../img/shopping-cart.png';
 import { useNavigate } from "react-router-dom";
 
 
-const BasketNav = ({ cartState }) => {
+const BasketNav = () => {
     const navigate = useNavigate();
 
     return (

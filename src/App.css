@@ -86,24 +86,11 @@ Header
 Basket
 */
 
-.Basket input {
-    background-clip: padding-box;
-    background-color: var(--cream);
-    border: 1px transparent solid;
-    border-radius: 5px;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    line-height: inherit;
-    margin: 0 30px;
-    padding: 0.9285714286em 0.7857142857em;
-    width: 200px;
-    word-break: normal;
-}
-
 .Basket .order-title,
 .Basket .order-empty,
 .Basket .order-info,
-.Basket .order-summary {
+.Basket .order-summary,
+.Checkout .order-summary {
     margin: 30px;
 }
 
@@ -142,22 +129,42 @@ Basket
     width: 36px;
 }
 
-.Basket .discount-wrapper {
+.Basket .order-summary,
+.Checkout .order-summary {
+    background-color: lightpink;
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+Checkout
+*/
+
+.Checkout input {
+    background-clip: padding-box;
+    background-color: var(--cream);
+    border: 1px transparent solid;
+    border-radius: 5px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    line-height: inherit;
+    margin: 0 30px;
+    padding: 0.9285714286em 0.7857142857em;
+    width: 200px;
+    word-break: normal;
+}
+
+.Checkout .discount-wrapper {
     align-items: center;
     display: flex;
     justify-content: center;
     flex-basis: 40%;
 }
 
-.Basket .discount-wrapper button {
+.Checkout .discount-wrapper button {
     background-color: var(--blue_light);
 }
 
-.Basket .order-summary {
-    background-color: lightpink;
-    display: flex;
-    flex-direction: column;
-}
 
 /*
 Item
