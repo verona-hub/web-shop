@@ -31,6 +31,10 @@ const Checkout = () => {
         let discountAmount = 0;
         let currentDiscount = 0;
 
+        // 20% off final cost cannot be used in conjunction with other codes
+        const cannotBeUsedInConjunction = !discount20percent && !discount5 && !discount20Eur;
+
+        // 5% off final cost can be used in conjunction with other codes
         if(!discount5 && !discount20percent && currentPromotionCode === '5%OFF'){
             setDiscount5(true);
             discountAmount = 0.05;
@@ -38,13 +42,16 @@ const Checkout = () => {
 
             setTotalPromotions([...totalPromotions, Number(currentDiscount)]);
         }
+
+        // 20 EUR off final cost can be used in conjunction with other codes
         if(!discount20Eur && !discount20percent && currentPromotionCode === '20EUROFF') {
             setDiscount20Eur(true);
             discountAmount = 20;
 
             setTotalPromotions([...totalPromotions, Number(discountAmount)]);
         }
-        if(!discount20percent && !discount5 && !discount20Eur && currentPromotionCode === '20%OFF') {
+
+        if(cannotBeUsedInConjunction && currentPromotionCode === '20%OFF') {
             setDiscount20percent(true);
             discountAmount = 0.2;
             currentDiscount = subtotal * discountAmount;
