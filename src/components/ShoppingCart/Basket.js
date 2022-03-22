@@ -8,8 +8,7 @@ const Basket = () => {
     // State
     const {
         cartState, addToCart, removeItem,
-        subtotal, setSubtotal,
-        setTotalPrice
+        subtotal, setSubtotal
     } = useContext(MyContext);
 
     const navigate = useNavigate();
@@ -22,7 +21,7 @@ const Basket = () => {
     }, [cartState, setSubtotal]);
 
     const onCheckout = () => {
-        setTotalPrice(subtotal);
+        setSubtotal(subtotal);
         navigate('/checkout');
     };
 

@@ -14,7 +14,7 @@ const Main = () => {
 
     // Basket and Checkout state
     const [currentPromotionCode, setCurrentPromotionCode] = useState('');
-    const [activatedPromotionCode, setActivatedPromotionCode] = useState([]);
+    const [totalPromotions, setTotalPromotions] = useState([]);
     const [discount20, setDiscount20] = useState(false);
     const [discount5, setDiscount5] = useState(false);
     const [discount20Eur, setDiscount20Eur] = useState(false);
@@ -49,7 +49,7 @@ const Main = () => {
         <main>
             <MyContext.Provider value={{
                 currentPromotionCode, setCurrentPromotionCode,
-                activatedPromotionCode, setActivatedPromotionCode,
+                totalPromotions, setTotalPromotions,
                 discount20, setDiscount20,
                 discount5, setDiscount5,
                 discount20Eur, setDiscount20Eur,
