@@ -15,7 +15,7 @@ const Main = () => {
     // Basket and Checkout state
     const [currentPromotionCode, setCurrentPromotionCode] = useState('');
     const [totalPromotions, setTotalPromotions] = useState([]);
-    const [discount20, setDiscount20] = useState(false);
+    const [discount20percent, setDiscount20percent] = useState(false);
     const [discount5, setDiscount5] = useState(false);
     const [discount20Eur, setDiscount20Eur] = useState(false);
     const [cartState, setCartState] = useState([]);
@@ -30,7 +30,7 @@ const Main = () => {
         }
     }, [setCartState]);
 
-    // Save cart state inside local storage
+    // Save cart state to local storage
     useEffect( () => {
         localStorage.setItem('cartState', JSON.stringify(cartState));
     }, [cartState]);
@@ -64,7 +64,7 @@ const Main = () => {
             <MyContext.Provider value={{
                 currentPromotionCode, setCurrentPromotionCode,
                 totalPromotions, setTotalPromotions,
-                discount20, setDiscount20,
+                discount20percent, setDiscount20percent,
                 discount5, setDiscount5,
                 discount20Eur, setDiscount20Eur,
                 cartState, setCartState,
