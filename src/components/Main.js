@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Routes } from "react-router-dom";
 
 // Context
@@ -22,6 +22,19 @@ const Main = () => {
     const [subtotal, setSubtotal] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
 
+    // Load the cart state from local storage
+    useEffect(() => {
+        const data = localStorage.getItem('cartState');
+        if(data) {
+            setCartState(JSON.parse(data));
+        }
+    }, [setCartState]);
+
+    // Save cart state inside local storage
+    useEffect( () => {
+        localStorage.setItem('cartState', JSON.stringify(cartState));
+    }, [cartState]);
+
     const addToCart = (item) => {
         const ifExists = cartState.find(x => x.id === item.id);
 
@@ -36,6 +49,7 @@ const Main = () => {
 
     const removeItem = (item) => {
         const ifExists = cartState.find(x => x.id === item.id);
+
         if (ifExists.quantity === 1) {
             setCartState(cartState.filter( x => x.id !== item.id ));
         } else {

@@ -17,8 +17,6 @@ const App = () => {
         addToCart, removeItem
     } = useContext(MyContext);
 
-
-
     return (
         <BrowserRouter>
             <div className="App">
