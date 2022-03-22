@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 // Context
 import { MyContext } from '../../Context/MyContext';
 
@@ -11,16 +11,17 @@ const Checkout = () => {
         discount20, setDiscount20,
         discount5, setDiscount5,
         discount20Eur, setDiscount20Eur,
-        subtotal, setSubtotal,
+        subtotal,
         totalPrice, setTotalPrice
     } = useContext(MyContext);
 
-    const [ totals, setTotals ] = useState([]);
-
     // The promotion amount is a sum of all promotion codes applied
     let promotionAmount = totalPromotions.reduce( (acc, curr) => acc + curr, 0);
-    let totalAmount = totals.reduce( (acc, curr) => acc + curr, 0);
 
+    // The total price
+    useEffect(() => {
+        setTotalPrice(subtotal - promotionAmount);
+    }, [setTotalPrice, subtotal, promotionAmount]);
 
     const onPromoChange = e => {
         setCurrentPromotionCode(e.target.value);
@@ -36,8 +37,6 @@ const Checkout = () => {
             currentDiscount = subtotal * discountAmount;
 
             setTotalPromotions([...totalPromotions, Number(currentDiscount)]);
-            // setTotalPrice(subtotal - promotionAmount);
-            // setTotals();
         }
 
         if(currentPromotionCode === '5%OFF'){
@@ -46,26 +45,16 @@ const Checkout = () => {
             currentDiscount = subtotal * discountAmount;
 
             setTotalPromotions([...totalPromotions, Number(currentDiscount)]);
-            // setTotalPrice(subtotal - promotionAmount);
         }
 
         if(currentPromotionCode === '20EUROFF') {
             setDiscount20Eur(true);
             discountAmount = 20;
-            currentDiscount = subtotal - discountAmount;
 
-            setTotalPromotions([...totalPromotions, Number(currentDiscount)]);
-            // setTotalPrice(subtotal - promotionAmount);
+            setTotalPromotions([...totalPromotions, Number(discountAmount)]);
         }
         setCurrentPromotionCode('');
     };
-
-    // useEffect( (promotionAmount) => {
-    //     setTotalPrice(totalPrice - promotionAmount);
-    // }, [totalPrice, setTotalPrice]);
-
-    // console.log(`activatedPromotionCode: ${activatedPromotionCode}`);
-    // console.log(`promotionAmount: ${promotionAmount}`)
 
     return (
         <div className='Checkout'>
@@ -91,7 +80,7 @@ const Checkout = () => {
                 { discount20 && <h3> Applied discount: 20% Off </h3> }
                 { discount5 && <h3> Applied discount: 5% Off </h3> }
                 { discount20Eur && <h3> Applied discount: 20 EUR Off </h3> }
-                {/*<h3> Total: &euro;{ totals.toFixed(2) } </h3>*/}
+                <h3> Total: &euro;{ totalPrice.toFixed(2) } </h3>
             </div>
         </div>
     );

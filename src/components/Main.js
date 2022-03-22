@@ -59,15 +59,9 @@ const Main = () => {
                 addToCart, removeItem
             }}>
                 <Routes>
-                    <Route
-                        path='/' element={ <Items /> }
-                    />
-                    <Route
-                        exact path='basket' element={ <Basket/> }
-                    />
-                    <Route
-                        exact path='checkout' element={ <Checkout /> }
-                    />
+                    <Route path='/' element={ <Items /> }/>
+                    <Route exact path='basket' element={ <Basket/> }/>
+                    <Route exact path='checkout' element={ <Checkout /> }/>
                 </Routes>
             </MyContext.Provider>
         </main>
