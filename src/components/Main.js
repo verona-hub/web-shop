@@ -45,9 +45,10 @@ const Main = () => {
         } else {
             setCartState([...cartState, {...item, quantity: 1}]);
         }
+        // console.log(item.quantity + 1)
     };
 
-    const removeItem = (item) => {
+    const reduceItem = (item) => {
         const ifExists = cartState.find(x => x.id === item.id);
 
         if (ifExists.quantity === 1) {
@@ -56,6 +57,14 @@ const Main = () => {
             setCartState(cartState.map( x => (
                 x.id === item.id ? {...ifExists, quantity: ifExists.quantity - 1} : x
             )));
+        }
+    };
+
+    const removeItem = (item) => {
+        const ifExists = cartState.find(x => x.id === item.id);
+
+        if (ifExists.quantity >= 0) {
+            setCartState(cartState.filter( x => x.id !== item.id ));
         }
     };
 
@@ -70,7 +79,7 @@ const Main = () => {
                 cartState, setCartState,
                 subtotal, setSubtotal,
                 totalPrice, setTotalPrice,
-                addToCart, removeItem
+                addToCart, reduceItem, removeItem
             }}>
                 <Routes>
                     <Route path='/' element={ <Items /> }/>

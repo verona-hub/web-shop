@@ -14,7 +14,7 @@ const App = () => {
 
     const {
         cartState, setCartState,
-        addToCart, removeItem
+        addToCart, reduceItem
     } = useContext(MyContext);
 
     return (
@@ -22,13 +22,13 @@ const App = () => {
             <div className="App">
                 <MyContext.Provider value={ {
                     cartState, setCartState,
-                    addToCart, removeItem
+                    addToCart, reduceItem
                 } }>
                     <Header cartState={ cartState }/>
                     <Main
                         addToCart={ addToCart }
                         cartState={ cartState }
-                        removeItem={ removeItem }
+                        reduceItem={ reduceItem }
                     />
                 </MyContext.Provider>
             </div>

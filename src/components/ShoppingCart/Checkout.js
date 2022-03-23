@@ -86,6 +86,7 @@ const Checkout = () => {
                 { discount5 && <h3> Applied discount: 5% Off </h3> }
                 { discount20Eur && <h3> Applied discount: 20 EUR Off </h3> }
                 <h3> Total: &euro;{ totalPrice.toFixed(2) } </h3>
+                <button> Buy </button>
             </div>
         </div>
     );

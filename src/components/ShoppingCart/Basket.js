@@ -7,7 +7,7 @@ const Basket = () => {
 
     // State
     const {
-        cartState, addToCart, removeItem,
+        cartState, addToCart, reduceItem, removeItem,
         subtotal, setSubtotal
     } = useContext(MyContext);
 
@@ -24,6 +24,7 @@ const Basket = () => {
         setSubtotal(subtotal);
         navigate('/checkout');
     };
+
 
     return (
         <section className='Basket'>
@@ -52,8 +53,11 @@ const Basket = () => {
                                     </div>
                                     <div className='buttons-wrapper'>
                                         <h4> Quantity:{ item.quantity } </h4>
-                                        <button onClick={ () => removeItem(item) }> -</button>
+                                        <button onClick={ () => reduceItem(item) }> -</button>
                                         <button onClick={ () => addToCart(item) }> +</button>
+                                    </div>
+                                    <div className='remove-button'>
+                                        <h3 onClick={ () => removeItem(item)}> X </h3>
                                     </div>
                                 </div> ))
                             }
