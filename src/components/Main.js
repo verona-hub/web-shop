@@ -45,7 +45,6 @@ const Main = () => {
         } else {
             setCartState([...cartState, {...item, quantity: 1}]);
         }
-        // console.log(item.quantity + 1)
     };
 
     const reduceItem = (item) => {
