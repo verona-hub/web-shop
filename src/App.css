@@ -90,7 +90,7 @@ Basket
 .Basket .order-empty,
 .Basket .order-info,
 .Basket .order-summary,
-.Checkout .order-summary {
+.CheckoutSummary {
     margin: 30px;
 }
 
@@ -130,7 +130,7 @@ Basket
 }
 
 .Basket .order-summary,
-.Checkout .order-summary {
+.CheckoutSummary {
     background-color: lightpink;
     display: flex;
     flex-direction: column;
@@ -154,14 +154,14 @@ Checkout
     word-break: normal;
 }
 
-.Checkout .discount-wrapper {
+.CheckoutMain {
     align-items: center;
     display: flex;
     justify-content: center;
     flex-basis: 40%;
 }
 
-.Checkout .discount-wrapper button {
+.CheckoutMain button {
     background-color: var(--blue_light);
 }
 
