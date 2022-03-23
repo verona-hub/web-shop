@@ -6,7 +6,7 @@ import { MyContext } from '../Context/MyContext';
 
 // Components
 import Basket from "./ShoppingCart/Basket";
-import Checkout from './ShoppingCart/Checkout';
+import Checkout from './ShoppingCart/Checkout/Checkout';
 import Items from "./Products/Items";
 
 
