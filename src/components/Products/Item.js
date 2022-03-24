@@ -14,7 +14,7 @@ const Item = ({ item }) => {
             </a>
             <h2> { item.name } </h2>
             <h4> &euro;{ item.price } </h4>
-            <button onClick={ () => addToCart(item) }> Add to cart </button>
+            <button onClick={ () => addToCart(item) }> Add to Cart </button>
         </div>
     );
 };

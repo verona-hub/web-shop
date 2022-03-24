@@ -39,7 +39,7 @@ const CheckoutSummary = () => {
             )}
 
             <h3> Total: &euro;{ totalPrice.toFixed(2) } </h3>
-            <button> Buy </button>
+            <button> Pay now </button>
         </div>
     );
 };

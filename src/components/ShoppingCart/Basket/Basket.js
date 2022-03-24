@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 // Context
-import { MyContext } from '../../Context/MyContext';
-import CheckoutMain from './Checkout/CheckoutMain';
+import { MyContext } from '../../../Context/MyContext';
 
 const Basket = () => {
 
@@ -72,7 +71,6 @@ const Basket = () => {
                     <button onClick={ onCheckout }> Checkout </button>
                 </>
             )}
-            {/*<CheckoutMain />*/}
         </section>
     );
 };

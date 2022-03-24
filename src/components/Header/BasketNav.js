@@ -12,7 +12,7 @@ const BasketNav = () => {
             onClick={ () => navigate('/basket') }
         >
             <img src={cartLogo} alt='shopping cart'/>
-            <h3 className='text'> BasketNav </h3>
+            <h3 className='text'> My Cart </h3>
         </section>
     );
 };

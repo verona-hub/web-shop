@@ -6,7 +6,7 @@ const CheckoutMain = () => {
     const {onPromoChange, currentPromotionCode, applyPromotion } = useContext(MyContext);
 
     return (
-        <div>
+        <div className="CheckoutMain">
             <h1> This is Checkout </h1>
 
             <div className="discount-wrapper">

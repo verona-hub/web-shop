@@ -4,6 +4,7 @@ import { MyContext } from '../../../Context/MyContext';
 // Components
 import CheckoutMain from './CheckoutMain';
 import CheckoutSummary from './CheckoutSummary';
+import CheckoutForm from './CheckoutForm';
 
 const Checkout = () => {
 
@@ -85,6 +86,7 @@ const Checkout = () => {
 
                 <CheckoutMain />
                 <CheckoutSummary/>
+                <CheckoutForm />
 
             </MyContext.Provider>
         </div>

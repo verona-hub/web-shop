@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import { MyContext } from '../Context/MyContext';
 
 // Components
-import Basket from "./ShoppingCart/Basket";
+import Basket from "./ShoppingCart/Basket/Basket";
 import Checkout from './ShoppingCart/Checkout/Checkout';
 import Items from "./Products/Items";
 

@@ -137,10 +137,17 @@ Basket
 }
 
 /*
-Checkout
+Checkout Main
 */
 
-.Checkout input {
+.CheckoutMain {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-basis: 40%;
+}
+
+.CheckoutMain input {
     background-clip: padding-box;
     background-color: var(--cream);
     border: 1px transparent solid;
@@ -154,12 +161,6 @@ Checkout
     word-break: normal;
 }
 
-.CheckoutMain {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-basis: 40%;
-}
 
 .CheckoutMain button {
     background-color: var(--blue_light);
