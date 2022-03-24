@@ -5,13 +5,13 @@ import { MyContext } from '../../../Context/MyContext';
 
 const Basket = () => {
 
+    const navigate = useNavigate();
+
     // State
     const {
         cartState, addToCart, reduceItem, removeItem,
         subtotal, setSubtotal
     } = useContext(MyContext);
-
-    const navigate = useNavigate();
 
     const cartIsEmpty = cartState.length === 0;
 

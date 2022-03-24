@@ -8,6 +8,7 @@ import { MyContext } from '../Context/MyContext';
 import Basket from "./ShoppingCart/Basket/Basket";
 import Checkout from './ShoppingCart/Checkout/Checkout';
 import Items from "./Products/Items";
+import OrderCompleted from './ShoppingCart/Checkout/OrderCompleted';
 
 
 const Main = () => {
@@ -21,6 +22,7 @@ const Main = () => {
     const [cartState, setCartState] = useState([]);
     const [subtotal, setSubtotal] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [orderCompleted, setOrderCompleted] = useState([]);
 
     // Load the cart state from local storage
     useEffect(() => {
@@ -78,12 +80,14 @@ const Main = () => {
                 cartState, setCartState,
                 subtotal, setSubtotal,
                 totalPrice, setTotalPrice,
+                orderCompleted, setOrderCompleted,
                 addToCart, reduceItem, removeItem
             }}>
                 <Routes>
                     <Route path='/' element={ <Items /> }/>
                     <Route exact path='basket' element={ <Basket/> }/>
                     <Route exact path='checkout' element={ <Checkout /> }/>
+                    <Route exact path='order-completed' element={ <OrderCompleted /> }/>
                 </Routes>
             </MyContext.Provider>
         </main>

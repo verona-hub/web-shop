@@ -31,7 +31,8 @@ img {
     width: 320px;
 }
 
-button {
+button,
+.button {
     background-color: var(--blue);
     border: none;
     border-radius: 4px;

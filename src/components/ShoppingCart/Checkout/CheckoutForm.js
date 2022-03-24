@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
-
+import React, { useState, useContext } from 'react';
+import { useNavigate } from "react-router-dom";
+// Context
+import { MyContext } from '../../../Context/MyContext';
 
 const CheckoutForm = () => {
+    const navigate = useNavigate();
+    const { cartState, setCartState, setOrderCompleted } = useContext(MyContext);
 
     const [inputValue, setInputValue] = useState({
         email: "",
         address: "",
+        city: '',
+        country: '',
+        postcode: '',
         name: "",
         surname: "",
         creditCard: ""
@@ -20,8 +27,9 @@ const CheckoutForm = () => {
     };
 
     const onFormSubmit = e => {
-        console.log(' Form submitted! ');
-        console.log(inputValue)
+        navigate('/order-completed');
+        setOrderCompleted(cartState);
+        setCartState([]);
         e.preventDefault();
     }
 
@@ -29,28 +37,7 @@ const CheckoutForm = () => {
         <section className='CheckoutForm'>
             <h2> Contact Information: </h2>
             <form onSubmit={ onFormSubmit }>
-                <input
-                    className='email'
-                    id='email'
-                    name='email'
-                    onChange={ onInputChange }
-                    placeholder='Email address'
-                    type='email'
-                    value={ inputValue.email }
-                    required
-                />
-
-                <input
-                    className='address'
-                    id='address'
-                    name='address'
-                    onChange={ onInputChange }
-                    placeholder='Address'
-                    type='text'
-                    value={ inputValue.address }
-                    required
-                />
-                <div className='credit-card-details'>
+                <div className='customer-details'>
                     <input
                         className='name'
                         id='name'
@@ -71,6 +58,18 @@ const CheckoutForm = () => {
                         value={ inputValue.surname }
                         required
                     />
+                </div>
+                <div className='customer-card'>
+                    <input
+                        className='email'
+                        id='email'
+                        name='email'
+                        onChange={ onInputChange }
+                        placeholder='Email'
+                        type='email'
+                        value={ inputValue.email }
+                        required
+                    />
                     <input
                         className='creditCard'
                         id='creditCard'
@@ -82,7 +81,54 @@ const CheckoutForm = () => {
                         required
                     />
                 </div>
-                <input type='submit'/>
+
+                <div className='customer-address'>
+                    <input
+                        className='address'
+                        id='address'
+                        name='address'
+                        onChange={ onInputChange }
+                        placeholder='Address'
+                        type='text'
+                        value={ inputValue.address }
+                        required
+                    />
+                    <input
+                        className='city'
+                        id='city'
+                        name='city'
+                        onChange={ onInputChange }
+                        placeholder='City'
+                        type='text'
+                        value={ inputValue.city }
+                        required
+                    />
+                    <input
+                        className='country'
+                        id='country'
+                        name='country'
+                        onChange={ onInputChange }
+                        placeholder='Country'
+                        type='text'
+                        value={ inputValue.country }
+                        required
+                    />
+                    <input
+                        className='postcode'
+                        id='postcode'
+                        name='postcode'
+                        onChange={ onInputChange }
+                        placeholder='Postcode'
+                        type='text'
+                        value={ inputValue.postcode }
+                        required
+                    />
+                </div>
+                <input
+                    className='button'
+                    type='submit'
+                    value='Place Order'
+                />
             </form>
         </section>
     );
