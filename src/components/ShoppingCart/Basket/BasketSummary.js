@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 // Context
 import { MyContext } from '../../../Context/MyContext';
 
+
 const BasketSummary = () => {
 
     const { subtotal } = useContext(MyContext);

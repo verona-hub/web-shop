@@ -23,7 +23,6 @@ const BasketMain = () => {
                 { !cartIsEmpty && (
                     <>
                         <div className='order-info'>
-
                             <div className='order-items'>
                                 { cartState.map(item => (
                                     <BasketItem key={ item.id } item={ item }/>
