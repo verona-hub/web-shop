@@ -8,7 +8,7 @@ import { MyContext } from '../Context/MyContext';
 import Basket from "./ShoppingCart/Basket/Basket";
 import Checkout from './ShoppingCart/Checkout/Checkout';
 import Items from "./Products/Items";
-import OrderCompleted from './ShoppingCart/Checkout/OrderCompleted';
+import OrderCompleted from './ShoppingCart/Checkout/CheckoutMain/CheckoutForm/OrderCompleted';
 
 
 const Main = () => {

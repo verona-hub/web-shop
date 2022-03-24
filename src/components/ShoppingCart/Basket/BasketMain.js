@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 // Context
 import { MyContext } from '../../../Context/MyContext';
 // Components
-import BasketItem from "./BasketItem";
-import BasketSummary from "./BasketSummary";
+import BasketItem from "./BasketMain/BasketItem";
+import BasketSummary from "./BasketMain/BasketSummary";
 
 
 const BasketMain = () => {

@@ -2,9 +2,9 @@ import React, { useContext, useEffect } from 'react';
 // Context
 import { MyContext } from '../../../Context/MyContext';
 // Components
-import CheckoutMain from './CheckoutMain';
-import CheckoutSummary from './CheckoutSummary';
-import CheckoutForm from './CheckoutForm';
+import Discount from './CheckoutMain/Discount';
+import CheckoutSummary from './CheckoutMain/CheckoutSummary';
+import CheckoutForm from './CheckoutMain/CheckoutForm/CheckoutForm';
 
 const Checkout = () => {
 
@@ -81,11 +81,15 @@ const Checkout = () => {
 
     return (
         <div className='Checkout'>
-            <MyContext.Provider
-                value={{ cartState, setCartState, discount20percent, discount5, discount20Eur, subtotal, totalPrice,
-                    currentPromotionCode, orderCompleted, setOrderCompleted, applyPromotion, removePromotion, onPromoChange }}>
+            <MyContext.Provider value={{
+                cartState, setCartState, discount20percent, discount5, discount20Eur,
+                subtotal, totalPrice, currentPromotionCode, orderCompleted, setOrderCompleted,
+                applyPromotion, removePromotion, onPromoChange
+            }}>
 
-                <CheckoutMain />
+                <h1> This is Checkout </h1>
+                <h3>20%OFF 5%OFF 20EUROFF</h3>
+                <Discount />
                 <CheckoutSummary/>
                 <CheckoutForm />
 

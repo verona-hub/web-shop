@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 // Context
-import { MyContext } from '../../../Context/MyContext';
+import { MyContext } from '../../../../../Context/MyContext';
 
 const CheckoutForm = () => {
     const navigate = useNavigate();

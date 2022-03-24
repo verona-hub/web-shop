@@ -189,32 +189,50 @@ Basket Main
 }
 
 /*
-Checkout Main
+Checkout
 */
 
-.CheckoutMain {
+.Checkout {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px;
+}
+
+/*
+Discount
+*/
+
+.Discount {
+    background-color: lightpink;
+    /*margin: 30px;*/
     align-items: center;
     display: flex;
     justify-content: center;
-    flex-basis: 40%;
+    padding: 30px;
 }
 
-.CheckoutMain input {
+.Discount input {
     background-clip: padding-box;
-    /*background-color: var(--cream);*/
-    border: 1px transparent solid;
+    border: 2px solid var(--blue_dark);
     border-radius: 5px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     line-height: inherit;
     margin: 0 30px;
+    outline: none;
     padding: 0.9285714286em 0.7857142857em;
     width: 200px;
     word-break: normal;
 }
 
+.Discount input:focus {
+    border: 2px solid var(--blue_light);
+}
 
-.CheckoutMain button {
+
+.Discount button {
     background-color: var(--blue_light);
 }
 
@@ -223,10 +241,8 @@ Checkout Summary
 */
 
 .CheckoutSummary {
-    background-color: lightpink;
     display: flex;
     flex-direction: column;
-    margin: 30px;
 }
 
 

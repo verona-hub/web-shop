@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 // Context
-import { MyContext } from '../../../Context/MyContext';
+import { MyContext } from '../../../../Context/MyContext';
 
 
 const BasketSummary = () => {
