@@ -5,7 +5,7 @@ import { MyContext } from "../../Context/MyContext";
 
 const Item = ({ item }) => {
 
-    const { addToCart } = useContext(MyContext);
+    const { addToBasket } = useContext(MyContext);
 
     return (
         <div className='Item'>
@@ -14,7 +14,7 @@ const Item = ({ item }) => {
             </a>
             <h2> { item.name } </h2>
             <h4> &euro;{ item.price } </h4>
-            <button onClick={ () => addToCart(item) }> Add to Cart </button>
+            <button onClick={ () => addToBasket(item) }> Add to Basket </button>
         </div>
     );
 };

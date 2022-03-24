@@ -89,9 +89,7 @@ Basket
 
 .Basket .order-title,
 .Basket .order-empty,
-.Basket .order-info,
-.Basket .order-summary,
-.CheckoutSummary {
+.Basket .order-info {
     margin: 30px;
 }
 
@@ -101,40 +99,34 @@ Basket
     justify-content: space-between;
 }
 
-.Basket .my-orders {
+.Basket .order-items {
     flex-basis: 40%;
 }
 
 .Basket .order-info {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
 }
 
-.Basket .order {
+.Basket .order-item {
     align-items: center;
-    border: 1px solid black;
+    border: 1px solid var(--black);
     display: flex;
     justify-content: space-around;
     margin: 10px 0;
 }
 
-.Basket .order img {
+.Basket .order-item img {
     height: 120px;
     width: 120px;
 }
 
-.Basket .order button {
+.Basket .order-item button {
     margin: 0 2px;
     padding: 0;
     height: 24px;
     width: 36px;
-}
-
-.Basket .order-summary,
-.CheckoutSummary {
-    background-color: lightpink;
-    display: flex;
-    flex-direction: column;
 }
 
 /*
@@ -165,6 +157,17 @@ Checkout Main
 
 .CheckoutMain button {
     background-color: var(--blue_light);
+}
+
+/*
+Checkout Summary
+*/
+
+.CheckoutSummary {
+    background-color: lightpink;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
 }
 
 

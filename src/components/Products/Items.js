@@ -8,11 +8,11 @@ import Item from './Item';
 
 const Items = () => {
 
-    const { addToCart } = useContext(MyContext);
+    const { addToBasket } = useContext(MyContext);
 
     return (
         <div className='Items'>
-            <MyContext.Provider value={{ addToCart }}>
+            <MyContext.Provider value={{ addToBasket }}>
                 {
                     ItemsData.map(item => (
                         <Item

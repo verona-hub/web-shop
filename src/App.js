@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter } from "react-router-dom";
 import './App.css';
 
@@ -12,26 +12,18 @@ import Main from './components/Main';
 
 const App = () => {
 
-    const {
-        cartState, setCartState,
-        addToCart, reduceItem
-    } = useContext(MyContext);
+    const [cartState, setCartState] = useState([]);
 
     return (
         <BrowserRouter>
-            <div className="App">
-                <MyContext.Provider value={ {
-                    cartState, setCartState,
-                    addToCart, reduceItem
-                } }>
-                    <Header cartState={ cartState }/>
-                    <Main
-                        addToCart={ addToCart }
-                        cartState={ cartState }
-                        reduceItem={ reduceItem }
-                    />
-                </MyContext.Provider>
-            </div>
+            <MyContext.Provider value={{
+                cartState, setCartState,
+            }}>
+                <div className="App">
+                    <Header />
+                    <Main />
+                </div>
+            </MyContext.Provider>
         </BrowserRouter>
     );
 };

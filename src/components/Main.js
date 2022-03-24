@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Route, Routes } from "react-router-dom";
 
 // Context
@@ -19,10 +19,10 @@ const Main = () => {
     const [discount20percent, setDiscount20percent] = useState(false);
     const [discount5, setDiscount5] = useState(false);
     const [discount20Eur, setDiscount20Eur] = useState(false);
-    const [cartState, setCartState] = useState([]);
     const [subtotal, setSubtotal] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const [orderCompleted, setOrderCompleted] = useState([]);
+    const { cartState, setCartState } = useContext(MyContext);
 
     // Load the cart state from local storage
     useEffect(() => {
@@ -37,7 +37,7 @@ const Main = () => {
         localStorage.setItem('cartState', JSON.stringify(cartState));
     }, [cartState]);
 
-    const addToCart = (item) => {
+    const addToBasket = (item) => {
         const ifExists = cartState.find(x => x.id === item.id);
 
         if (ifExists) {
@@ -81,7 +81,7 @@ const Main = () => {
                 subtotal, setSubtotal,
                 totalPrice, setTotalPrice,
                 orderCompleted, setOrderCompleted,
-                addToCart, reduceItem, removeItem
+                addToBasket, reduceItem, removeItem
             }}>
                 <Routes>
                     <Route path='/' element={ <Items /> }/>
