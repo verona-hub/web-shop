@@ -9,7 +9,7 @@ const OrderCompleted = () => {
     console.log(orderCompleted)
 
     return (
-        <div>
+        <div className="OrderCompleted">
             <h2> Thank you for your order </h2>
             <h3> Your order details: </h3>
             { orderCompleted.map(item => (

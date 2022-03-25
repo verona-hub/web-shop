@@ -5,6 +5,7 @@
     --blue_dark: #04042b;
     --cream: #eee8e6;
     --green: #027502;
+    --yellow: #f0c14b;
     --white: #fff;
 }
 
@@ -194,20 +195,18 @@ Checkout
 */
 
 .Checkout {
+    margin: 30px;
     align-items: center;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 30px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .Checkout .discount-summary-wrapper {
     display: flex;
-    min-height: 300px;
-    margin: 30px;
-    justify-content: space-evenly;
-    padding: 30px;
-    width: 900px;
+    flex-direction: column;
+    height: 350px;
+    justify-content: space-between;
 }
 
 /*
@@ -215,15 +214,23 @@ Checkout Summary
 */
 
 .CheckoutSummary {
-    flex-basis: 30%;
+    /*margin-bottom: 50px;*/
 }
 
 .CheckoutSummary * {
-    margin: 10px 0;
+    margin: 5px 0;
+    padding: 5px 0;
+}
+
+.CheckoutSummary h1 {
+    text-decoration: underline;
 }
 
 .CheckoutSummary h2 {
-    margin-top: 20px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    margin: 20px 0;
+    padding: 20px 0;
 }
 
 .CheckoutSummary button {
@@ -240,6 +247,10 @@ Checkout Summary
 /*
 Discount
 */
+
+.Discount {
+    /*margin-top: 40px;*/
+}
 
 .Discount h3 {
     margin: 10px 0;
@@ -276,19 +287,10 @@ CheckoutForm
 */
 
 .CheckoutForm {
-    margin: 30px;
 }
 
 .CheckoutForm h2 {
     margin: 10px 10px 20px;
-
-}
-
-.CheckoutForm form {
-}
-
-.CheckoutForm form .customer-address {
-
 }
 
 .CheckoutForm input {
@@ -317,7 +319,12 @@ CheckoutForm
 .CheckoutForm .buy-wrapper {
     margin: 20px auto;
     text-align: center;
-    width: 100%;
+}
+
+.CheckoutForm input.buy {
+    background-color: var(--yellow);
+    border: 1px solid;
+    color: var(--black);
 }
 
 /*
@@ -355,10 +362,40 @@ Mobile
         justify-content: center;
         margin: 30px;
     }
+    .Checkout .discount-summary-wrapper {
+        display: flex;
+        min-height: 300px;
+        margin: 30px;
+        justify-content: space-evenly;
+        padding: 30px;
+        width: auto;
+    }
+    .CheckoutSummary {
+        flex-basis: 30%;
+    }
+    .CheckoutSummary * {
+        margin: 10px 0;
+    }
+    .CheckoutForm {
+        margin: 30px;
+    }
+    .CheckoutForm .buy-wrapper {
+        margin: 20px auto;
+        text-align: center;
+        width: 100%;
+    }
+
 }
 
 @media (max-width: 768px) {
     .BasketMain {
         margin: 20px 0;
+    }
+    .Checkout .discount-summary-wrapper {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        width: auto;
     }
 }

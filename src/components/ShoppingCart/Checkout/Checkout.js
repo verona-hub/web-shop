@@ -16,7 +16,7 @@ const Checkout = () => {
         discount5, setDiscount5,
         discount20Eur, setDiscount20Eur,
         cartState, setCartState,
-        subtotal, totalPrice, setTotalPrice,
+        subtotal, setSubtotal, totalPrice, setTotalPrice,
         orderCompleted, setOrderCompleted
     } = useContext(MyContext);
 
@@ -83,13 +83,9 @@ const Checkout = () => {
         <div className='Checkout'>
             <MyContext.Provider value={{
                 cartState, setCartState, discount20percent, discount5, discount20Eur,
-                subtotal, totalPrice, currentPromotionCode, orderCompleted, setOrderCompleted,
+                subtotal, setSubtotal, totalPrice, setTotalPrice, currentPromotionCode, orderCompleted, setOrderCompleted,
                 applyPromotion, removePromotion, onPromoChange
             }}>
-                <div>
-                    <h1> This is Checkout </h1>
-                    <h3>20%OFF 5%OFF 20EUROFF</h3>
-                </div>
 
                 <div className='discount-summary-wrapper'>
                     <CheckoutSummary/>

@@ -37,6 +37,12 @@ const Main = () => {
         localStorage.setItem('cartState', JSON.stringify(cartState));
     }, [cartState]);
 
+    // Save subTotal Price
+    useEffect( () => {
+        localStorage.setItem('subtotal', JSON.stringify(subtotal));
+    }, [subtotal]);
+
+
     const addToBasket = (item) => {
         const ifExists = cartState.find(x => x.id === item.id);
 
