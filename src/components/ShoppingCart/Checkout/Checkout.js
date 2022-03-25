@@ -17,7 +17,8 @@ const Checkout = () => {
         discount20Eur, setDiscount20Eur,
         cartState, setCartState,
         subtotal, setSubtotal, totalPrice, setTotalPrice,
-        orderCompleted, setOrderCompleted
+        orderCompleted, setOrderCompleted,
+        inputValue, setInputValue
     } = useContext(MyContext);
 
     // The promotion amount is a sum of all promotion codes applied
@@ -83,7 +84,9 @@ const Checkout = () => {
         <div className='Checkout'>
             <MyContext.Provider value={{
                 cartState, setCartState, discount20percent, discount5, discount20Eur,
-                subtotal, setSubtotal, totalPrice, setTotalPrice, currentPromotionCode, orderCompleted, setOrderCompleted,
+                subtotal, setSubtotal, totalPrice, setTotalPrice,
+                currentPromotionCode, orderCompleted, setOrderCompleted,
+                inputValue, setInputValue,
                 applyPromotion, removePromotion, onPromoChange
             }}>
 

@@ -327,6 +327,25 @@ CheckoutForm
     color: var(--black);
 }
 
+
+/*
+Order Completed
+*/
+
+.OrderCompleted {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+    justify-content: center;
+    text-align: center;
+}
+
+.OrderCompleted * {
+    margin: 10px;
+    padding: 10px;
+}
+
 /*
 Item
 */

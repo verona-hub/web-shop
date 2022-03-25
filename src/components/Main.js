@@ -23,6 +23,16 @@ const Main = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [orderCompleted, setOrderCompleted] = useState([]);
     const { cartState, setCartState } = useContext(MyContext);
+    const [inputValue, setInputValue] = useState({
+        email: "",
+        address: "",
+        city: '',
+        country: '',
+        postcode: '',
+        name: "",
+        surname: "",
+        creditCard: ""
+    });
 
     // Load the cart state from local storage
     useEffect(() => {
@@ -37,10 +47,31 @@ const Main = () => {
         localStorage.setItem('cartState', JSON.stringify(cartState));
     }, [cartState]);
 
-    // Save subTotal Price
+    // Load the subtotal price from local storage
+    useEffect(() => {
+        const data = localStorage.getItem('subtotal');
+        if(data) {
+            setSubtotal(JSON.parse(data));
+        }
+    }, [setSubtotal]);
+
+    // Save subTotal Price to local storage
     useEffect( () => {
         localStorage.setItem('subtotal', JSON.stringify(subtotal));
     }, [subtotal]);
+
+    // Load the orderCompleted from local storage
+    useEffect(() => {
+        const data = localStorage.getItem('orderCompleted');
+        if(data) {
+            setOrderCompleted(JSON.parse(data));
+        }
+    }, [setOrderCompleted]);
+
+    // Save orderCompleted to local storage
+    useEffect( () => {
+        localStorage.setItem('inputValue', JSON.stringify(orderCompleted));
+    }, [orderCompleted]);
 
 
     const addToBasket = (item) => {
@@ -87,6 +118,7 @@ const Main = () => {
                 subtotal, setSubtotal,
                 totalPrice, setTotalPrice,
                 orderCompleted, setOrderCompleted,
+                inputValue, setInputValue,
                 addToBasket, reduceItem, removeItem
             }}>
                 <Routes>

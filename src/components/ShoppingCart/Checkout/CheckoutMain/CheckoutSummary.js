@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext} from 'react';
 import { MyContext } from "../../../../Context/MyContext";
 
 
@@ -6,20 +6,13 @@ const CheckoutSummary = () => {
 
     // State and functions
     const {
-        discount20percent, discount5, discount20Eur,
-        subtotal, setSubtotal, totalPrice,
+        discount20percent,
+        discount5,
+        discount20Eur,
+        subtotal,
+        totalPrice,
         removePromotion
     } = useContext(MyContext);
-
-
-    // Load the subtotal price from local storage
-    useEffect(() => {
-        const data = localStorage.getItem('subtotal');
-        if(data) {
-            setSubtotal(JSON.parse(data));
-        }
-    }, [setSubtotal]);
-
 
     return (
         <div className="CheckoutSummary">

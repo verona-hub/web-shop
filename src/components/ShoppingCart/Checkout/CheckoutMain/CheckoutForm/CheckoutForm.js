@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { MyContext } from '../../../../../Context/MyContext';
 
 const CheckoutForm = () => {
+
     const navigate = useNavigate();
     const { cartState, setCartState, setOrderCompleted } = useContext(MyContext);
 
