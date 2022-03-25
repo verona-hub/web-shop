@@ -59,7 +59,7 @@ const CheckoutForm = () => {
                         required
                     />
                 </div>
-                <div className='customer-card'>
+                <div>
                     <input
                         className='email'
                         id='email'
@@ -70,6 +70,8 @@ const CheckoutForm = () => {
                         value={ inputValue.email }
                         required
                     />
+                </div>
+                <div>
                     <input
                         className='creditCard'
                         id='creditCard'
@@ -103,6 +105,8 @@ const CheckoutForm = () => {
                         value={ inputValue.city }
                         required
                     />
+                </div>
+                <div>
                     <input
                         className='country'
                         id='country'
@@ -124,11 +128,13 @@ const CheckoutForm = () => {
                         required
                     />
                 </div>
-                <input
-                    className='button'
-                    type='submit'
-                    value='Place Order'
-                />
+                <div className="buy-wrapper">
+                    <input
+                        className='button buy'
+                        type='submit'
+                        value='Buy Now'
+                    />
+                </div>
             </form>
         </section>
     );

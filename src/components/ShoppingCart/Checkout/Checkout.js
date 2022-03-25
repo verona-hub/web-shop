@@ -86,11 +86,16 @@ const Checkout = () => {
                 subtotal, totalPrice, currentPromotionCode, orderCompleted, setOrderCompleted,
                 applyPromotion, removePromotion, onPromoChange
             }}>
+                <div>
+                    <h1> This is Checkout </h1>
+                    <h3>20%OFF 5%OFF 20EUROFF</h3>
+                </div>
 
-                <h1> This is Checkout </h1>
-                <h3>20%OFF 5%OFF 20EUROFF</h3>
-                <Discount />
-                <CheckoutSummary/>
+                <div className='discount-summary-wrapper'>
+                    <CheckoutSummary/>
+                    <Discount/>
+                </div>
+
                 <CheckoutForm />
 
             </MyContext.Provider>

@@ -7,10 +7,11 @@ const Discount = () => {
 
     return (
         <div className="Discount">
+            <h3> Gift cards & promotional codes & Vouchers: </h3>
             <input
                 id='promotion'
                 onChange={ onPromoChange }
-                placeholder='Discount code'
+                placeholder='Enter discount code'
                 type='text'
                 value={ currentPromotionCode }
             />
